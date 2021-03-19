@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modern Hebrew typer</title>
+<meta charset="utf-8">
+
+    <script type="text/javascript">
+
+
+
+        function getReplacedText(latinText) {
+            if (!latinText) {
+                return "";
+        }
+            var replacedText = "";
+            for (var i = 0, len = latinText.length; i < len; i++) {
+                var curLetter = latinText[i];
+                var pos1Txt = latinText[i + 1];
+                var pos2Txt = latinText[i + 2];
+                if (!(curLetter == "")) {
+                    var dualLetter = latreplaced[curLetter + pos1Txt];
+                    if (dualLetter) {
+                        replacedText += dualLetter;
+                        i++;
+                        continue;
+                    }
+                }
+                replacedText += latreplaced[curLetter] || curLetter;
+            }
+            return replacedText;
+        }
+        
+     
+        var latreplaced = {
+"a": "א",
+"b": "ב",
+"g": "ג",
+"d": "ד",
+"h": "ה",
+"v": "ו",
+"z": "ז",
+"x": "ח",
+"t": "ט",
+"i": "י",
+"q": "כ",
+"Q": "ך",
+"l": "ל",
+"m": "מ",
+"M": "ם",
+"n": "נ",
+"N": "ן",
+"s": "ס",
+"e": "ע",
+"p": "פ",
+"P": "ף",
+"c": "צ",
+"C": "ץ",
+"k": "ק",
+"r": "ר",
+"w": "ש",
+"tt": "ת",
+		
+"A": "[invalid]",
+"B": "[invalid]",
+"D": "[invalid]",
+"E": "[invalid]",
+"F": "[invalid]",
+"G": "[invalid]",
+"H": "[invalid]",
+"I": "[invalid]",
+"J": "[invalid]",
+"K": "[invalid]",
+"L": "[invalid]",
+"O": "[invalid]",
+"R": "[invalid]",
+"S": "[invalid]",
+"T": "[invalid]",
+"U": "[invalid]",
+"V": "[invalid]",
+"W": "[invalid]",
+"X": "[invalid]",
+"Y": "[invalid]",
+"Z": "[invalid]",
+
+"y": "[?i]",
+"u": "[?v]",
+"o": "[?v]",
+"f": "[?p]",
+"j": "[?'g]",
+
+"-": "־",
+"$": "₪",
+"`": "&#8203;"
+        };
+
+        function onLatinTextChange(txt) {
+            var replacedTextareaElem = document.getElementById("replaced_textarea");
+            var div = document.createElement("div");
+            var replacedHtmlEntities = getReplacedText(txt);
+            div.innerHTML = replacedHtmlEntities;
+            replacedTextareaElem.value = div.innerText;
+        }
+	    
+	function select() {
+         const input = document.getElementById('latin_textarea');
+ 	 input.focus();
+ 	 input.select();
+	}
+        function copytext() {
+        var copyText = document.getElementById("replaced_textarea");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+        }
+
+
+
+
+    </script>
+    
+<style>
+html {font-family:arial}
+table {
+  font-size: 14pt;
+  border-collapse: collapse;
+  width: 90%;
+}
+td, th {
+  border: 1px solid #AAA;
+  text-align: center;
+  padding: 1px;
+}
+textarea {
+	font-size: 16pt;
+	font-family: Arial;
+    width: 96%;
+} 
+.note {
+  border: 1px solid #DDD;
+  width: 30%;
+  text-align: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+</style>
+
+
+</head>
+<body>  
+
+<body>  
+
+<center><h1 class="text-center">Modern Hebrew typer</h1></center>
+
+<center>
+<table>
+<thead>
+<tr>
+<th>	
+<button onclick="copytext()">Copy text</button>
+</th>
+<th>
+<button onclick="select('latin_textarea')">Select all</button>
+<button onclick="document.getElementById('latin_textarea').value = ''">Clear</button>
+</th>
+<th style="width:180px">Conversion table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<textarea rows="10" placeholder="output" dir="rtl" id="replaced_textarea" style="text-align: right;"></textarea> 
+</td>
+<td>
+<textarea
+id="latin_textarea"
+autofocus=""
+placeholder="input"
+rows="10"
+oninput="onLatinTextChange(this.value)"></textarea> 
+</td>
+<td>
+
+<center>
+<div style="overflow-y: scroll; height:250px; width:170px">
+
+<table>
+<thead>
+<tr>
+<th>Latin</th>
+<th>Hebrew</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>א</td>
+</tr>
+<tr>
+<td>b</td>
+<td>ב</td>
+</tr>
+<tr>
+<td>g</td>
+<td>ג</td>
+</tr>
+<tr>
+<td>d</td>
+<td>ד</td>
+</tr>
+<tr>
+<td>h</td>
+<td>ה</td>
+</tr>
+<tr>
+<td>v</td>
+<td>ו</td>
+</tr>
+<tr>
+<td>z</td>
+<td>ז</td>
+</tr>
+<tr>
+<td>x</td>
+<td>ח</td>
+</tr>
+<tr>
+<td>t</td>
+<td>ט</td>
+</tr>
+<tr>
+<td>i</td>
+<td>י</td>
+</tr>
+<tr>
+<td>q</td>
+<td>כ</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>ך</td>
+</tr>
+<tr>
+<td>l</td>
+<td>ל</td>
+</tr>
+<tr>
+<td>m</td>
+<td>מ</td>
+</tr>
+<tr>
+<td>M</td>
+<td>ם</td>
+</tr>
+<tr>
+<td>n</td>
+<td>נ</td>
+</tr>
+<tr>
+<td>N</td>
+<td>ן</td>
+</tr>
+<tr>
+<td>s</td>
+<td>ס</td>
+</tr>
+<tr>
+<td>e</td>
+<td>ע</td>
+</tr>
+<tr>
+<td>p</td>
+<td>פ</td>
+</tr>
+<tr>
+<td>P</td>
+<td>ף</td>
+</tr>
+<tr>
+<td>c</td>
+<td>צ</td>
+</tr>
+<tr>
+<td>C</td>
+<td>ץ</td>
+</tr>
+<tr>
+<td>k</td>
+<td>ק</td>
+</tr>
+<tr>
+<td>r</td>
+<td>ר</td>
+</tr>
+<tr>
+<td>w</td>
+<td>ש</td>
+</tr>
+<tr>
+<td>tt</td>
+<td>ת</td>
+</tr>
+<tr>
+<td>-</td>
+<td>־</td>
+</tr>
+<tr>
+<td>$</td>
+<td>₪</td>
+</tr>
+<tr>
+<td>`</td>
+<td>character<br>breaker</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</center>
+
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+
+
+
+</body>
+</html>
